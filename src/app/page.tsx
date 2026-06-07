@@ -34,9 +34,6 @@ export default async function Home() {
                   View updates <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild variant="outline">
-                <Link href="/admin">Admin dashboard</Link>
-              </Button>
             </div>
           </div>
           <div className="grid gap-4">

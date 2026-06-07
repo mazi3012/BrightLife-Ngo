@@ -1,7 +1,5 @@
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
-
 export function SiteHeader() {
   return (
     <header className="border-b border-slate-200 bg-white/90 backdrop-blur">
@@ -13,12 +11,6 @@ export function SiteHeader() {
           <Link href="#updates" className="text-slate-600 hover:text-slate-900">
             Updates
           </Link>
-          <Link href="/admin" className="text-slate-600 hover:text-slate-900">
-            Admin
-          </Link>
-          <Button asChild variant="default" size="sm">
-            <Link href="/admin">Open Dashboard</Link>
-          </Button>
         </nav>
       </div>
     </header>
