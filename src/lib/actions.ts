@@ -14,8 +14,8 @@ const createPostSchema = z.object({
   title: z.string().min(3).max(255),
   content: z.string().min(10),
   imageUrl: z.preprocess(
-    (value) => (value === "" || value == null ? undefined : value),
-    z.string().url().optional(),
+    (value) => (value === "" || value == null ? undefined : String(value)),
+    z.string().optional(),
   ),
 });
 
