@@ -1,6 +1,6 @@
 import { desc } from "drizzle-orm";
 import Image from "next/image";
-import { PlusCircle, List, FileText, Trash2, Calendar } from "lucide-react";
+import { PlusCircle, List, FileText, Calendar } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { ImageUpload } from "@/components/ImageUpload";
+import { DeletePostButton } from "@/components/DeletePostButton";
 import {
   Table,
   TableBody,
@@ -16,7 +17,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { createPost, deletePost } from "@/lib/actions";
+import { createPost } from "@/lib/actions";
 import { getDb } from "@/lib/db";
 import { posts } from "@/lib/schema";
 import { parseImageUrls } from "@/lib/utils";
@@ -152,25 +153,7 @@ export default async function AdminPage() {
 
                         {/* Action buttons */}
                         <TableCell className="py-4 text-right pr-6">
-                          <form
-                            action={deletePost}
-                            onSubmit={(e) => {
-                              if (!confirm("Are you sure you want to delete this update? This action cannot be undone.")) {
-                                e.preventDefault();
-                              }
-                            }}
-                          >
-                            <input type="hidden" name="id" value={post.id} />
-                            <Button
-                              type="submit"
-                              variant="ghost"
-                              size="sm"
-                              className="text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg cursor-pointer"
-                              title="Delete update"
-                            >
-                              <Trash2 className="h-4.5 w-4.5" />
-                            </Button>
-                          </form>
+                          <DeletePostButton postId={post.id} />
                         </TableCell>
                       </TableRow>
                     );
